@@ -1,7 +1,13 @@
 const jwt = require('jsonwebtoken');
 
-const generarJWT = (uid) => {
-
+/**
+ * 
+ * This functions generate a Json Web token
+ * @params {String} uid - User Uid.
+ * @returns {Promise} Returns a promise with JWT 
+ * 
+*/
+function generarJWT(uid = String) {
     return new Promise((resolve, reject) => {
 
         const payload = {

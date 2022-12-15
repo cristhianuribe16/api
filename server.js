@@ -1,36 +1,59 @@
-require('dotenv').config();
+/** Express router providing user related routes
+ * @module routers/users
+ * @requires express
+ */
 
+require('dotenv').config();
+/**
+ * express module
+ * @const
+ */
 const express = require('express');
+
+/**
+ * Starts Cors
+ * @const
+ */
 const cors = require('cors');
 
-//const { dbConnection } = require('./database/config');
+/**
+ * Set PORT
+ * @const
+ */
 const PORT = process.env.PORT || 4000;
-// Crear el servidor de express
+
+
+/**
+ * Create Express Server
+ * @const
+ */
 const app = express();
 
-// Configurar CORS
+/**
+ * Configure cors
+ */
 app.use(cors());
 
-// Lectura y parseo del body
+/**
+ * Parse request body to Json
+ */
 app.use(express.json());
 
-// Base de datos
-//dbConnection();
 
-// Directorio público
-app.use(express.static('public'));
-
-
-// Rutas
+/**
+ * @swagger
+ * /api/usuarios:
+ *   user:
+ *     description: Conduce to routes of users to check their method (POST-GET-PUT-DELETE).
+*/
 app.use('/api/usuarios', require('./routes/usuarios'));
-// app.use('/api/empresas', require('./routes/empresas'));
-// app.use('/api/medicos', require('./routes/medicos'));
-// app.use('/api/todo', require('./routes/busquedas'));
-// app.use('/api/login', require('./routes/auth'));
-// app.use('/api/upload', require('./routes/uploads'));
 
 
-
+const user = process.env.USER
+/**
+ * @listens
+ * description: Start the server to listen calls
+*/
 app.listen(PORT, () => {
-    console.log('Servidor corriendo en puerto ' + PORT);
+    console.log(`Server running at port: ${PORT}\nCreated by: ${user}`);
 });

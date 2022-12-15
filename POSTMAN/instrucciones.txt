@@ -1,0 +1,2 @@
+- Importar a POSTMAN
+- Ejecutar Collection

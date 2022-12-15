@@ -1,10 +1,17 @@
 const jwt = require('jsonwebtoken');
 
-const validarJWT = (req, res, next) => {
+/**
+ * 
+ * This functions validate a Json Web token
+ * @params {request} req - Request.
+ * @params {response} res - Response.
+ * @params {next} next - next.
+ * @returns {Promise} Returns a promise with JWT 
+ * 
+*/
+const validarJWT = (req = request, res = response, next) => {
 
-    // Leer el Token
     const token = req.header('x-token');
-
     if (!token) {
         return res.status(401).json({
             ok: false,

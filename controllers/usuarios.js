@@ -3,6 +3,7 @@ const { generarJWT } = require("../helpers/jwt");
 
 
 /**
+ * 
  * This functions return a list of users.
  * @params {request} req - Request from back.
  * @params {response} res - Response to front.
@@ -12,11 +13,19 @@ const { generarJWT } = require("../helpers/jwt");
 async function getUsuarios(req = request, res = response) {
     res.json({
         ok: true,
-        message: "Obteniendo usuarios.",
+        message: "Obteniendo usuarios [].",
     });
 };
 
-const crearUsuario = async (req, res = response) => {
+/**
+ * 
+ * This functions create a user
+ * @params {request} req - Request from back.
+ * @params {response} res - Response to front.
+ * @returns {response} Response 
+ * 
+*/
+async function crearUsuario(req = request, res = response) {
     // Generar el TOKEN - JWT
     const token = await generarJWT("123");
     try {
@@ -33,9 +42,16 @@ const crearUsuario = async (req, res = response) => {
     }
 };
 
-const actualizarUsuario = async (req, res = response) => {
-    // TODO: Validar token y comprobar si es el usuario correcto
+/**
+ * 
+ * This functions update a user.
+ * @params {request} req - Request from back.
+ * @params {response} res - Response to front.
+ * @returns {response} Response 
+ * 
+*/
 
+async function actualizarUsuario(req = request, res = response) {
     try {
         res.json({
             ok: true,
@@ -50,7 +66,16 @@ const actualizarUsuario = async (req, res = response) => {
     }
 };
 
-const borrarUsuario = async (req, res = response) => {
+/**
+ * 
+ * This functions delete a user.
+ * @params {request} req - Request from back.
+ * @params {response} res - Response to front.
+ * @returns {response} Response 
+ * 
+*/
+
+async function borrarUsuario(req = request, res = response) {
     try {
         res.json({
             ok: true,
